@@ -41,7 +41,7 @@
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Demander un nouveau</span>
+                <span class="hide-menu">Demande</span>
               </a>
             </li>
             <li class="sidebar-item">

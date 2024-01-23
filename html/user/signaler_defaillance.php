@@ -24,15 +24,18 @@
                           <option>Imprimante</option>
                         </select>
                     </div>
+                    
                     <div class="mb-3">
-                      <label for="description" class="form-label">Description de la panne</label>
-                      <input type="text" class="form-control" id="description" required>
+                      <label for="raison" class="form-label">Description de la panne</label>
+                      <textarea class="form-control" name="raison" id="raison" cols="30" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
                       <label for="code_secret" class="form-label">Code Secret</label>
-                      <input type="password" class="form-control" id="code_secret" required>
+                      <input type="password" class="form-control" id="code_secret">
                     </div>
-                    <button type="submit" class="btn btn-primary">Signaler</button>
+                    <div class="d-flex justify-content-end align-items-end">
+                    <button type="submit" class="btn btn-primary w-25 mt-3">Signaler</button>
+                    </div>
                   </form>
             </div>
           </div>

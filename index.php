@@ -2,9 +2,54 @@
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'accueil';
 
-$menu = 'html/user/menu.php';
 
-switch ($page) {
+
+$admin = true;
+
+if ($admin) {
+  $menu = 'html/admin/menu.php';
+  switch ($page) {
+    case 'accueil':
+        $view = 'html/admin/dashboard.php';
+        break;
+    
+    case 'equipements':
+      $view = 'html/admin/equipements.php';
+      break;
+
+    case 'stock':
+      $view = 'html/admin/stock.php';
+      break;
+    
+    case 'signaler_defaillance':
+      $view = 'html/user/signaler_defaillance.php';
+        break;
+
+    case 'tickets':
+      $view = 'html/user/tickets.php';
+         break;
+        
+    case 'tickets_non_traites':
+      $view = 'html/user/tickets_non_traites.php';
+        break;
+
+    case 'tickets_traites':
+      $view = 'html/user/tickets_traites.php';
+        break;
+
+    case 'tickets_rejetes':
+      $view = 'html/user/tickets_rejetes.php';
+        break;
+
+    
+    
+    default:
+        break;
+}
+}
+else{
+  $menu = 'html/user/menu.php';
+  switch ($page) {
     case 'accueil':
         $view = 'html/user/dashboard.php';
         break;
@@ -42,6 +87,8 @@ switch ($page) {
     default:
         break;
 }
+}
+
 
 ?>
 

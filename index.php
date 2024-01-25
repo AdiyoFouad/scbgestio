@@ -25,6 +25,18 @@ if ($admin) {
       $view = 'html/admin/historique.php';
       break;
 
+    case 'users':
+      $view = 'html/admin/users.php';
+      break;
+
+    case 'alter_user':
+      $view = 'html/admin/alter_user.php';
+      break;
+
+    case 'user_plus':
+      $view = 'html/admin/user_plus.php';
+      break;
+
     case 'assigner_retirer':
       $view = 'html/admin/assigner_retirer.php';
         break;

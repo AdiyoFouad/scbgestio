@@ -103,7 +103,7 @@
               <span class="hide-menu">Gestion des utilisateurs</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+              <a class="sidebar-link" href="?page=users" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
@@ -111,7 +111,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+              <a class="sidebar-link" href="?page=user_plus" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
@@ -119,7 +119,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+              <a class="sidebar-link" href="?page=alter_user" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>

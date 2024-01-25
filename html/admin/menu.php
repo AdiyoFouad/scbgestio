@@ -58,7 +58,7 @@
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Historique des entrés/sorties</span>
+                <span class="hide-menu">Historique des entrées/sorties</span>
               </a>
             </li>
             <li class="nav-small-cap">

@@ -9,14 +9,7 @@
         <div id="filtres" class="row">
           
         
-        <div class="mb-3 col-6 col-sm-3">
-            <label for="type_equipement" class="form-label">Equipement</label>
-            <select id="type_equipement" class="form-select" >
-              <option selected>Tout</option>
-              <option>En stock</option>
-              <option>Assigné</option>
-            </select>
-          </div>
+       
           <div class="mb-3 col-6 col-sm-3">
             <label for="type_equipement" class="form-label">Type</label>
             <select id="type_equipement" class="form-select" >
@@ -35,6 +28,15 @@
               <option>Endommagé</option>
             </select>
           </div>
+          <div class="mb-3 col-6 col-sm-3">
+            <label for="type_equipement" class="form-label">Département</label>
+            <select id="type_equipement" class="form-select" >
+              <option selected>Tout</option>
+              <option>DE</option>
+              <option>HSE</option>
+            </select>
+          </div>
+          
           
           
         </div>

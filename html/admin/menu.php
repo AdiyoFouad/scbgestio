@@ -45,7 +45,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=signaler_defaillance" aria-expanded="false">
+              <a class="sidebar-link" href="?page=assigner_retirer" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
@@ -54,7 +54,7 @@
             </li>
             
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=demande_equipement" aria-expanded="false">
+              <a class="sidebar-link" href="?page=historique" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>

@@ -21,8 +21,12 @@ if ($admin) {
       $view = 'html/admin/stock.php';
       break;
     
-    case 'signaler_defaillance':
-      $view = 'html/user/signaler_defaillance.php';
+    case 'historique':
+      $view = 'html/admin/historique.php';
+      break;
+
+    case 'assigner_retirer':
+      $view = 'html/admin/assigner_retirer.php';
         break;
 
     case 'tickets':

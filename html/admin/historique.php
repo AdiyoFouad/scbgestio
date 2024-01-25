@@ -51,7 +51,29 @@
                             <i class="ti ti-arrow-left text-success"></i>
                           </span>entré stock</h6>
                         </td>
-                      </tr>         
+                      </tr>  
+                      
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
+                        <td class="border-bottom-0">
+                            <p class="fw-normal mb-0">Logiciel</p>                         
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-normal text-wap mb-0">License Microsoft</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-normal mb-0">XXXX-XXXX-XXXX-XXXX</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-normal mb-0 d-flex">
+                            <span class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-left text-success"></i>
+                          </span>M. Fouad (S/Informatique)</h6>
+                        </td>
+                      </tr>        
                       <tr>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">2</h6></td>
                         <td class="border-bottom-0">

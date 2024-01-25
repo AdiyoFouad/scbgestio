@@ -26,7 +26,7 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Equipements</span>
+              <span class="hide-menu">gestion des Equipements</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=stock" aria-expanded="false">
@@ -63,7 +63,7 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">TICKETS</span>
+              <span class="hide-menu">gestion des TICKETS</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
@@ -95,6 +95,35 @@
                   <i class="ti ti-user-plus"></i>
                 </span>
                 <span class="hide-menu">Tickets rejetés</span>
+              </a>
+            </li>
+            
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Gestion des utilisateurs</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Tous les utilisateurs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Ajouter</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Modifier</span>
               </a>
             </li>
           </ul>

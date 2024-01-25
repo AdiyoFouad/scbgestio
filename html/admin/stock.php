@@ -9,14 +9,6 @@
         <div id="filtres" class="row">
           
         
-        <div class="mb-3 col-6 col-sm-3">
-            <label for="type_equipement" class="form-label">Equipement</label>
-            <select id="type_equipement" class="form-select" >
-              <option selected>Tout</option>
-              <option>En stock</option>
-              <option>Assigné</option>
-            </select>
-          </div>
           <div class="mb-3 col-6 col-sm-3">
             <label for="type_equipement" class="form-label">Type</label>
             <select id="type_equipement" class="form-select" >
@@ -45,7 +37,7 @@
                     <thead class="text-dark fs-4">
                       <tr>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">N°</h6>
+                          <h6 class="fw-semibold mb-0">Qté</h6>
                         </th>
                         
                         <th class="border-bottom-0">
@@ -63,6 +55,7 @@
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Etat</h6>
                         </th>
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -78,17 +71,12 @@
                           <h6 class="fw-normal mb-0">XXXX-XXXX-XXXX-XXXX</h6>
                         </td>
                         <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">M. Roaman</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">25 Janvier 2022</h6>
                         </td>
                         <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">Expire dans 15jrs</h6>
                         </td>
+                        
                       </tr>         
                       <tr>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">2</h6></td>
@@ -100,12 +88,6 @@
                         </td>
                         <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">Core i5, windows 7 installé</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">O. Fouad</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
                         </td>
                         <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">25 Janvier 2022</h6>
@@ -128,12 +110,6 @@
                           <h6 class="fw-normal mb-0">Core i5, windows 7 installé</h6>
                         </td>
                         <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">O. Fouad</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">25 Janvier 2022</h6>
                         </td>
                         <td class="border-bottom-0">
@@ -152,12 +128,6 @@
                         </td>
                         <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">Core i5, windows 7 installé</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">O. Fouad</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
                         </td>
                         <td class="border-bottom-0">
                           <h6 class="fw-normal mb-0">25 Janvier 2022</h6>

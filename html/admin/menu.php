@@ -45,14 +45,6 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=demande_equipement" aria-expanded="false">
-                <span>
-                  <i class="ti ti-alert-circle"></i>
-                </span>
-                <span class="hide-menu">Ajouter</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link" href="?page=signaler_defaillance" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
@@ -60,12 +52,13 @@
                 <span class="hide-menu">Assigner/Retirer </span>
               </a>
             </li>
+            
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=demande_equipement" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Supprimer</span>
+                <span class="hide-menu">Historique des entrés/sorties</span>
               </a>
             </li>
             <li class="nav-small-cap">

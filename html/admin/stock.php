@@ -27,6 +27,10 @@
               <option>Endommagé</option>
             </select>
           </div>
+
+          <div class="col d-flex justify-content-end align-items-center mt-2">
+            <button type="submit" class="btn btn-primary ">Ajouter un équipement</button>
+        </div>
           
           
         </div>

@@ -1,10 +1,22 @@
 <?php
+session_start();
+
+
+
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'accueil';
 
 
+$admin = $_SESSION['administrateur'];
+//session_destroy();
 
-$admin = true;
+$user_id = $_SESSION['id_user'] ? $_SESSION['id_user'] : null;
+
+
+if (!$user_id) {
+  header("Location: login.php"); // Redirige vers login.php si l'utilisateur n'est pas spécifié
+  exit(); // Assure que le script s'arrête ici pour éviter l'exécution du reste du code
+}
 
 if ($admin) {
   $menu = 'html/admin/menu.php';
@@ -29,25 +41,17 @@ if ($admin) {
       $view = 'html/admin/users.php';
       break;
 
-    case 'alter_user':
-      $view = 'html/admin/alter_user.php';
-      break;
-
-    case 'user_plus':
-      $view = 'html/admin/user_plus.php';
-      break;
-
     case 'assigner_retirer':
       $view = 'html/admin/assigner_retirer.php';
-        break;
+      break;
 
     case 'tickets':
       $view = 'html/user/tickets.php';
-         break;
+      break;
         
     case 'tickets_non_traites':
       $view = 'html/user/tickets_non_traites.php';
-        break;
+      break;
 
     case 'tickets_traites':
       $view = 'html/user/tickets_traites.php';

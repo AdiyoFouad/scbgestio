@@ -24,6 +24,14 @@
                 <span class="hide-menu">Tableau de bord</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=users" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Gestion des utilisateurs</span>
+              </a>
+            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">gestion des Equipements</span>
@@ -98,34 +106,7 @@
               </a>
             </li>
             
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Gestion des utilisateurs</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=users" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Tous les utilisateurs</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=user_plus" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Ajouter</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=alter_user" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Modifier</span>
-              </a>
-            </li>
+            
           </ul>
         </nav>
         <!-- End Sidebar navigation -->

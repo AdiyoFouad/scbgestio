@@ -21,7 +21,7 @@ function seconnecter($email, $mdp) {
 
 function getUsers(){
     $req = execSQL(
-        'SELECT * FROM users ',
+        'SELECT * FROM users',
         array()
     );
     return $req;
@@ -31,6 +31,34 @@ function creerUser($nom, $prenom, $email, $departement, $administrateur, $mdp){
     $req = execSQL(
         'INSERT INTO users(nom, prenom, email, departement, administrateur, mdp) VALUES(?, ?, ?, ?, ?, ? )',
         array($nom, $prenom, $email, $departement, $administrateur, $mdp)
+    );
+}
+
+function getUserById($user_id){
+    $req = execSQL(
+        'SELECT * FROM users WHERE id_user = ?',
+        array($user_id)
+    );
+    $res = $req->fetch();
+    return $res;
+}
+
+function getUsersByDepartement($departement){
+    $req = $departement =='all'? execSQL(
+        'SELECT * FROM users',
+        array()
+    ) : execSQL(
+        'SELECT * FROM users WHERE departement = ?',
+        array($departement)
+    );
+    $res = $req->fetchall();
+    return $res;
+}
+
+function alterUser($nom, $prenom, $email, $departement, $administrateur, $mdp, $user_id){
+    $req = execSQL(
+        'UPDATE users SET nom = ?, prenom = ?, email = ?, departement = ?, administrateur = ?, mdp = ? WHERE id_user = ?',
+        array($nom, $prenom, $email, $departement, $administrateur, $mdp, $user_id)
     );
 }
 

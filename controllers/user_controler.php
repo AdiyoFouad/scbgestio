@@ -15,9 +15,22 @@ if (isset($_POST['logout']) ){
 
 if (isset($_POST['new_user']) ){
     creerUser($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['departement'], $_POST['administrateur'], $_POST['mdp']);
-    //header('Location:?page=users');
+    header("Location:".$base_url."?page=users");
 }
 
+if (isset($_POST['alter_user']) ){
+    alterUser($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['departement'], $_POST['administrateur'], $_POST['mdp'], $_POST['user_id']);
+    header("Location:../?page=users");
+}
 
+if (isset($_GET['id'])) {
+    $user = getUserById($_GET['id']);
+    echo json_encode($user);
+}
+
+if (isset($_GET['departement'])) {
+    $users = getUsersByDepartement($_GET['departement']);
+    echo json_encode($users);
+}
 
 ?>

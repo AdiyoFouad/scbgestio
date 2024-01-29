@@ -15,7 +15,7 @@ if (isset($_POST['logout']) ){
 
 if (isset($_POST['new_user']) ){
     creerUser($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['departement'], $_POST['administrateur'], $_POST['mdp']);
-    header("Location:".$base_url."?page=users");
+    header("Location:../?page=users");
 }
 
 if (isset($_POST['alter_user']) ){

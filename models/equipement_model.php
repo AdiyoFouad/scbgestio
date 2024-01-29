@@ -21,7 +21,6 @@ function getEquipementsEnStock(){
 }
 
 
-
 function getEquipementsEnStockByTypeAndEtat($type, $etat) {
     // Effectuez ici votre logique pour filtrer les équipements en stock en fonction du type et de l'état
     // Utilisez les paramètres $type et $etat dans votre requête SQL
@@ -85,7 +84,28 @@ function getEquipementsAssignésByTypeAndEtatAndDepartement($type, $etat, $depar
     return $req->fetchall();
 }
 
+function getEquipementsByUserAndType($user_id, $type_equipement){
+    $req = execSQL(
+        'SELECT * FROM equipements, users WHERE utilisateur = ? AND id_user = ? AND type_équipement = ?',
+        array($user_id, $user_id, $type_equipement)
+    );
+    return $req->fetchall();
+}
 
+
+function setEquipementUser($equipement, $user){
+    $req = execSQL(
+        'UPDATE equipements SET utilisateur = ?, date_assignation = ? WHERE id_equipement = ?',
+        array($user, date('d-m-Y'),$equipement)
+    );
+}
+
+function removeEquipementUser($equipement){
+    $req = execSQL(
+        'UPDATE equipements SET utilisateur = NULL, date_assignation = NULL WHERE id_equipement = ?',
+        array($equipement)
+    );
+}
 
 
 

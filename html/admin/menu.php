@@ -43,6 +43,14 @@
                 </span>
                 <span class="hide-menu">Equipements en stock</span>
               </a>
+            </li> 
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=stck" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Etat consommables</span>
+              </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=equipements" aria-expanded="false">
@@ -73,14 +81,14 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">gestion des TICKETS</span>
             </li>
-            <li class="sidebar-item">
+           <!-- <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
                 <span class="hide-menu">Tout</span>
               </a>
-            </li>
+            </li>-->
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets_non_traites" aria-expanded="false">
                 <span>

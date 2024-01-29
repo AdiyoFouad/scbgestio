@@ -12,6 +12,11 @@ if (isset($_GET['type']) && isset($_GET['statut']) ){
     echo json_encode($equipements);
 }
 
+if (isset($_GET['type']) && isset($_GET['etat']) && isset($_GET['departement'])){
+    $equipements = getEquipementsAssignésByTypeAndEtatAndDepartement($_GET['type'], $_GET['etat'], $_GET['departement']);
+    echo json_encode($equipements);
+}
+
 
 
 ?>

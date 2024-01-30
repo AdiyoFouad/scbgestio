@@ -29,6 +29,11 @@ if ($admin) {
       $view = 'html/admin/equipements.php';
       break;
 
+    
+    case 'consommables':
+      $view = 'html/admin/consommables.php';
+      break;
+
     case 'stock':
       $view = 'html/admin/stock.php';
       break;

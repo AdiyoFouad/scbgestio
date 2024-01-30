@@ -87,9 +87,9 @@ $users = getUsers(); // Récupérer les utilisateurs
     </div>
 
     <div id="popup1" class="popup">
-        <button class="btn btn-danger d-flex justify-content-center align-items-center" id="fermer" onclick="hidePopup()">
-            <i class="ti ti-circle-minus"></i>
-        </button>
+        <button class="btn btn-danger fs-5  d-flex justify-content-center align-items-center" id="fermer" onclick="hidePopup()">
+                <i class="ti ti-x fs-5 fw-bolder"></i>
+            </button>
         <form action="controllers/user_controler.php" method="post">
             <h5 class="text-center">Ajouter un nouvel utilisateur</h5>
             <hr>
@@ -143,9 +143,9 @@ $users = getUsers(); // Récupérer les utilisateurs
     </div>
 
     <div id="popup2" class="popup">
-        <button class="btn btn-danger d-flex justify-content-center align-items-center" id="fermer" onclick="hidePopup2()">
-            <i class="ti ti-circle-minus"></i>
-        </button>
+            <button class="btn btn-danger fs-5  d-flex justify-content-center align-items-center" id="fermer" onclick="hidePopup()">
+                <i class="ti ti-x fs-5 fw-bolder"></i>
+            </button>
         <form action="controllers/user_controler.php" method="post">
             <h5 class="text-center">Ajouter un nouvel utilisateur</h5>
             <hr>

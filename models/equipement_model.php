@@ -14,7 +14,7 @@ function ajouterEquipement($type_equipement, $designation, $date_achat, $etat, $
 
 function getEquipementsEnStock(){
     $req = execSQL(
-        'SELECT * FROM equipements WHERE utilisateur IS NULL',
+        'SELECT * FROM equipements WHERE utilisateur IS NULL ORDER BY désignation',
         array()
     );
     return $req;
@@ -39,6 +39,8 @@ function getEquipementsEnStockByTypeAndEtat($type, $etat) {
         $params[] = $etat;
     }
 
+    $sql .= " ORDER BY désignation";
+
     // Exécutez la requête SQL avec les paramètres
     $req = execSQL($sql, $params);
 
@@ -48,7 +50,7 @@ function getEquipementsEnStockByTypeAndEtat($type, $etat) {
 
 function getEquipementsAssignés(){
     $req = execSQL(
-        'SELECT * FROM equipements, users WHERE utilisateur = id_user',
+        'SELECT * FROM equipements, users WHERE utilisateur = id_user ORDER BY désignation',
         array()
     );
     return $req;
@@ -78,6 +80,7 @@ function getEquipementsAssignésByTypeAndEtatAndDepartement($type, $etat, $depar
         $params[] = $departement;
     }
 
+    $sql .= " ORDER BY désignation";
     // Exécutez la requête SQL avec les paramètres
     $req = execSQL($sql, $params);
 
@@ -86,7 +89,7 @@ function getEquipementsAssignésByTypeAndEtatAndDepartement($type, $etat, $depar
 
 function getEquipementsByUserAndType($user_id, $type_equipement){
     $req = execSQL(
-        'SELECT * FROM equipements, users WHERE utilisateur = ? AND id_user = ? AND type_équipement = ?',
+        'SELECT * FROM equipements, users WHERE utilisateur = ? AND id_user = ? AND type_équipement = ? ORDER BY désignation',
         array($user_id, $user_id, $type_equipement)
     );
     return $req->fetchall();
@@ -96,7 +99,7 @@ function getEquipementsByUserAndType($user_id, $type_equipement){
 function setEquipementUser($equipement, $user){
     $req = execSQL(
         'UPDATE equipements SET utilisateur = ?, date_assignation = ? WHERE id_equipement = ?',
-        array($user, date('d-m-Y'),$equipement)
+        array($user, date('Y-m-d'),$equipement)
     );
 }
 

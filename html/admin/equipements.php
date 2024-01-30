@@ -92,9 +92,15 @@ $equipements = getEquipementsAssignés(); // Récupérer les équipements
                         <h6 class="fw-normal mb-0"><?php echo $equipement['date_assignation']; ?></h6>
                     </td>
                     <td class="border-bottom-0">
-                        <?php if ($equipement['type_équipement'] == 'Logiciel') : ?>
+                    <?php 
+                        $dateAssignation = new DateTime($equipement['date_assignation']);
+                        $aujourdHui = new DateTime();
+                        $difference = $aujourdHui->diff($dateAssignation);
+                        $joursRestants = $equipement['durée'] - $difference->days - 1;
+
+                        if ($equipement['type_équipement'] == 'Logiciel') : ?>
                             <div class="d-flex align-items-center gap-2">
-                                <span class="fw-semibold"><?php echo "". $equipement['durée'] ." jours"; ?></span>
+                                <span class="fw-semibold"><?php echo "$joursRestants jrs restants"; ?></span>
                             </div>
                         <?php else : ?>
                             <?php if ($equipement['etat'] == 'Bon état') : ?>
@@ -206,7 +212,7 @@ function applyFilters() {
                 ${
                     equipement['type_équipement'] === 'Logiciel'
                         ? `<div class="d-flex align-items-center gap-2">
-                               <span class="fw-semibold">${equipement['durée']} jours</span>
+                               <span class="fw-semibold">${calculateDaysRemaining(equipement['date_assignation'], equipement['durée'])} jours restant</span>
                            </div>`
                         : equipement['etat'] === 'Bon état'
                             ? `<div class="d-flex align-items-center gap-2">
@@ -228,6 +234,21 @@ function applyFilters() {
         tbody.appendChild(newRow);
     });
 }
+
+function calculateDaysRemaining(dateAssignation, duree) {
+    // Convertir la date d'assignation en objet Date
+    var dateAssignationObj = new Date(dateAssignation);
+
+    // Calculer la date d'expiration en ajoutant la durée en jours
+    var expirationDate = new Date(dateAssignationObj.getTime() + duree * 24 * 60 * 60 * 1000);
+
+    // Calculer le nombre de jours restant
+    var currentDate = new Date();
+    var daysRemaining = Math.floor((expirationDate - currentDate) / (24 * 60 * 60 * 1000));
+
+    return daysRemaining;
+}
+
 
 
 

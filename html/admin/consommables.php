@@ -159,8 +159,15 @@ $consommables = getConsommables();
 
         // Vous pouvez également pré-remplir le formulaire si l'action est "modifier" avec les informations du consommable
         if (action === 'modifier' && consommableId !== null) {
-            // Utilisez consommableId pour récupérer les informations du consommable à modifier
-            // Puis, remplissez les champs du formulaire avec ces informations
+            fetch('controllers/consommable_controler.php?id=' + consommableId)
+            .then(response => response.json())
+            .then(consommableData => {
+                document.getElementById('quantite').value = consommableData['quantité'];
+                document.getElementById('designation').value = consommableData['désignation'];
+                document.getElementById('modele').value = consommableData['modèle'];
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données du consommable:', error));
+
         }
     }
 

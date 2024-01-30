@@ -13,7 +13,7 @@ function getConsommables() {
 
 function getConsommablesById($id_equipement) {
     $req = execSQL(
-        'SELECT * FROM consommables WHERE id_consommable = ?', // Tri par ordre alphabétique de la désignation
+        'SELECT * FROM consommables WHERE id_consommable = ?', 
         array($id_equipement)
     );
     

@@ -17,10 +17,34 @@ $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`equipements` ( `id_equipemen
 
 $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`consommables` ( `id_consommable` INT NOT NULL AUTO_INCREMENT , `désignation` VARCHAR(25) NOT NULL , `modèle` VARCHAR(25) NOT NULL , `quantité` INT NOT NULL DEFAULT '0' , PRIMARY KEY (`id_consommable`)) ENGINE = InnoDB");
 
+
+$bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`historique_mouvement` (
+    `id_mouvement` INT NOT NULL AUTO_INCREMENT,
+    `id_equipement` INT,
+    `id_consommable` INT,
+    `type_mouvement` ENUM('ENTREE', 'SORTIE') NOT NULL,
+    `quantite` INT NOT NULL,
+    `date_mouvement` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `id_utilisateur` INT,
+    PRIMARY KEY (`id_mouvement`),
+    FOREIGN KEY (`id_equipement`) REFERENCES `equipements` (`id_equipement`) ON DELETE CASCADE,
+    FOREIGN KEY (`id_consommable`) REFERENCES `consommables` (`id_consommable`),
+    FOREIGN KEY (`id_utilisateur`) REFERENCES `users` (`id_user`) ON DELETE CASCADE
+) ENGINE = InnoDB;
+");
+
 function execSQL($sql, $param) {
     global $bdd;
     $req = $bdd->prepare($sql);
     $req->execute($param);
     return $req;
 }
+
+
+
+function getLastId() {
+    global $bdd;
+    return $bdd->lastInsertId();
+}
+
 ?>

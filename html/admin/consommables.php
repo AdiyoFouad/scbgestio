@@ -38,9 +38,9 @@ $consommables = getConsommables();
                 <tbody>
                     <?php while ($consommable = $consommables->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <td class="pl-1"><?php echo $consommable['quantite']; ?></td>
-                            <td><?php echo $consommable['designation']; ?></td>
-                            <td><?php echo $consommable['modele']; ?></td>
+                            <td class="pl-1"><?php echo $consommable['quantité']; ?></td>
+                            <td><?php echo $consommable['désignation']; ?></td>
+                            <td><?php echo $consommable['modèle']; ?></td>
                             <td><button class="btn btn-light float-right m-0" onclick="showPopup('modifier', <?php echo $consommable['id_consommable']; ?>)">Modifier</button></td>
                         </tr>
                     <?php endwhile; ?>
@@ -54,9 +54,10 @@ $consommables = getConsommables();
                 <i class="ti ti-x fs-5 fw-bolder"></i>
             </button>
             <!-- Formulaire d'ajout/modification de consommable -->
-            <form action="controllers/consommable_controller.php" method="post">
+            <form action="controllers/consommable_controler.php" method="post">
                 <h5 class="text-center">Ajouter/Modifier un consommable</h5>
                 <hr>
+                <input type="text" id="consommable_id" name="consommable_id" hidden>
                 <!-- Champs du formulaire -->
                 <div class="mb-3">
                     <label for="quantite" class="form-label">Quantité</label>
@@ -72,7 +73,7 @@ $consommables = getConsommables();
                 </div>
                 <!-- ... autres champs du formulaire ... -->
                 <div class="d-flex justify-content-center align-items-center">
-                    <button type="submit" name="ajouter_consommable" class="btn btn-primary mt-3">Ajouter/Modifier</button>
+                    <button id="btn" type="submit" name="ajouter_consommable" class="btn btn-primary mt-3">Ajouter/Modifier</button>
                 </div>
             </form>
         </div>
@@ -161,10 +162,13 @@ $consommables = getConsommables();
         if (action === 'modifier' && consommableId !== null) {
             fetch('controllers/consommable_controler.php?id=' + consommableId)
             .then(response => response.json())
-            .then(consommableData => {
+            .then(consommableData => {    
+                console.log(consommableData);
+                document.getElementById('consommable_id').value = consommableData['id_consommable'];
                 document.getElementById('quantite').value = consommableData['quantité'];
                 document.getElementById('designation').value = consommableData['désignation'];
                 document.getElementById('modele').value = consommableData['modèle'];
+                document.getElementById('btn').name = 'update_consommable';
             })
             .catch(error => console.error('Erreur lors de la récupération des données du consommable:', error));
 

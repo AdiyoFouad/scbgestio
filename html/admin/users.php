@@ -147,7 +147,7 @@ $users = getUsers(); // Récupérer les utilisateurs
                 <i class="ti ti-x fs-5 fw-bolder"></i>
             </button>
         <form action="controllers/user_controler.php" method="post">
-            <h5 class="text-center">Ajouter un nouvel utilisateur</h5>
+            <h5 class="text-center">Modifier utilisateur</h5>
             <hr>
             <input type="text" id="user_id2" name="user_id" hidden>
             <div class="">

@@ -9,11 +9,10 @@ if (isset($_POST['new_equipement']) ){
 if (isset($_POST['update_equipement_user']) ){
     if ($_POST['action'] == 'assigner') {
         setEquipementUser($_POST['equipement'], $_POST['user']);
-        header("Location:../?page=equipements");
     } else {
-        removeEquipementUser($_POST['equipement']);
-        header("Location:../?page=stock");
+        removeEquipementUser($_POST['equipement'], $_POST['user']);
     }
+    header("Location:../?page=equipements");
 }
 
 if (isset($_GET['type']) && isset($_GET['statut']) ){

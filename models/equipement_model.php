@@ -2,6 +2,9 @@
 
 require_once (__DIR__ ."/../connexion_db.php");
 
+require_once("historique_model.php");
+
+
 
 
 function ajouterEquipement($type_equipement, $designation, $date_achat, $etat, $duree, $caracteristique){
@@ -9,6 +12,9 @@ function ajouterEquipement($type_equipement, $designation, $date_achat, $etat, $
         'INSERT INTO equipements(type_équipement, désignation, date_achat, etat, durée, caractéristique) VALUES (?, ?, ?, ?, ?, ?)',
         array($type_equipement, $designation, $date_achat, $etat, $duree, $caracteristique)
     );
+
+    $id_equipement = getLastId();
+    addHistoriqueMouvement($id_equipement, null, 'ENTREE', 1);
 }
 
 
@@ -101,13 +107,16 @@ function setEquipementUser($equipement, $user){
         'UPDATE equipements SET utilisateur = ?, date_assignation = ? WHERE id_equipement = ?',
         array($user, date('Y-m-d'),$equipement)
     );
+    addHistoriqueMouvementWithUser($equipement, null, 'SORTIE', 1, $user);
+
 }
 
-function removeEquipementUser($equipement){
+function removeEquipementUser($equipement, $user){
     $req = execSQL(
         'UPDATE equipements SET utilisateur = NULL, date_assignation = NULL WHERE id_equipement = ?',
         array($equipement)
     );
+    addHistoriqueMouvementWithUser($equipement, null, 'SORTIE', 1, $user);    
 }
 
 

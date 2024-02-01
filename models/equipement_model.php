@@ -116,7 +116,7 @@ function removeEquipementUser($equipement, $user){
         'UPDATE equipements SET utilisateur = NULL, date_assignation = NULL WHERE id_equipement = ?',
         array($equipement)
     );
-    addHistoriqueMouvementWithUser($equipement, null, 'SORTIE', 1, $user);    
+    addHistoriqueMouvementWithUser($equipement, null, 'ENTREE', 1, $user);    
 }
 
 

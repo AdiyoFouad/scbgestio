@@ -61,7 +61,7 @@ $consommables = getConsommables();
                 <!-- Champs du formulaire -->
                 <div class="mb-3">
                     <label for="quantite" class="form-label">Quantité</label>
-                    <input type="number" class="form-control" id="quantite" name="quantite" required>
+                    <input type="number" min="0" class="form-control" id="quantite" name="quantite" required>
                 </div>
                 <div class="mb-3">
                     <label for="designation" class="form-label">Désignation</label>

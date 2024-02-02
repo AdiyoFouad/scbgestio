@@ -51,19 +51,19 @@ if ($admin) {
       break;
 
     case 'tickets':
-      $view = 'html/user/tickets.php';
+      $view = 'html/admin/tickets.php';
       break;
         
     case 'tickets_non_traites':
-      $view = 'html/user/tickets_non_traites.php';
+      $view = 'html/admin/tickets_non_traites.php';
       break;
 
     case 'tickets_traites':
-      $view = 'html/user/tickets_traites.php';
+      $view = 'html/admin/tickets_traites.php';
         break;
 
     case 'tickets_rejetes':
-      $view = 'html/user/tickets_rejetes.php';
+      $view = 'html/admin/tickets_rejetes.php';
         break;
 
     

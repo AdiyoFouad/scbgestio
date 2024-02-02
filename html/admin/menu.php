@@ -90,19 +90,19 @@
               </a>
             </li>-->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=tickets_non_traites" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Tickets non traités</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets_traites" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
                 <span class="hide-menu">Tickets traités</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=tickets_non_traites" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Tickets non traités</span>
               </a>
             </li>
             <li class="sidebar-item">

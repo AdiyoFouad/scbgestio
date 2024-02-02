@@ -17,7 +17,6 @@ $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`equipements` ( `id_equipemen
 
 $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`consommables` ( `id_consommable` INT NOT NULL AUTO_INCREMENT , `désignation` VARCHAR(25) NOT NULL , `modèle` VARCHAR(25) NOT NULL , `quantité` INT NOT NULL DEFAULT '0' , PRIMARY KEY (`id_consommable`)) ENGINE = InnoDB");
 
-
 $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`historique_mouvement` (
     `id_mouvement` INT NOT NULL AUTO_INCREMENT,
     `id_equipement` INT,
@@ -32,6 +31,8 @@ $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`historique_mouvement` (
     FOREIGN KEY (`id_utilisateur`) REFERENCES `users` (`id_user`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 ");
+
+$bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`tickets` ( `ref_ticket` VARCHAR(10) NOT NULL , `date_creation` DATE NOT NULL , `id_equipement` INT NOT NULL , `id_user` INT NOT NULL , `statut` ENUM('En cours','Traité','Rejeté') NOT NULL , `description` VARCHAR(1000) NOT NULL , `type_demande` ENUM('Nouvelle installation','Problème technique','Demande d''''assistance') NOT NULL , PRIMARY KEY (`ref_ticket`)) ENGINE = InnoDB;");
 
 function execSQL($sql, $param) {
     global $bdd;

@@ -11,4 +11,14 @@ if (isset($_GET['type_demande']) && isset($_GET['type_équipement']) && isset($_
     echo json_encode($tickets);
 }
 
+if (isset($_POST['rejeter'])){
+    modifierTicket($_POST['ref'],'Rejeté');
+    header('Location: ../?page=tickets_rejetes');
+}
+
+if (isset($_POST['cloturer'])){
+    modifierTicket($_POST['ref'],'Traité');
+    header('Location: ../?page=tickets_traites');
+}
+
 ?>

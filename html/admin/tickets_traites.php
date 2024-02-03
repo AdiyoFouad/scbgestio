@@ -9,7 +9,7 @@ $users = getUsers();// Récupérer les utilisateurs
 
 <div class="container-fluid">
     <div class="container-fluid">
-        <h4 class="fw-semibold mb-4 justify-content-end">Tickets</h4>
+        <h4 class="fw-semibold mb-4 justify-content-end">Tickets traité</h4>
         <hr>
         <div class="card mb-3 p-0">
             <div class="card-body pt-1 pb-0">

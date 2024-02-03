@@ -74,4 +74,12 @@ function getTicketByFiltre($type_demande, $type_equipement, $user, $statut) {
 }
 
 
+function modifierTicket($ref, $statut){
+    $req = execSQL(
+        'UPDATE tickets SET statut = ? WHERE ref_ticket = ?',
+        array($statut, $ref)
+    );
+}
+
+
 ?>

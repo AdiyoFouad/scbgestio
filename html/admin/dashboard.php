@@ -1,3 +1,21 @@
+<?php
+include_once("models/equipement_model.php");
+
+include_once("models/ticket_model.php");
+
+?>
+
+<div hidden>
+  <span id="var_"><?php echo  1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+  <span id="var_"><?php echo 1; ?></span>
+</div>
+
 <div class="container-fluid">
     <h4 class="fw-semibold mb-1 justify-content-end">SCB Gestio </h4>
     <hr>

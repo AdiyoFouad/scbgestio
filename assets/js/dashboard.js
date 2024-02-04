@@ -8,7 +8,7 @@ $(function () {
 
   var breakup = {
     color: "#adb5ff",
-    series: [8, 16],
+    series: [parseInt(document.getElementById('var_nbrelog').innerText), parseInt(document.getElementById('var_nbremat').innerText)],
     labels: ["Logiciels", "Matériels"],
     chart: {
       width: 400,
@@ -62,6 +62,10 @@ $(function () {
   // =====================================
   // Fréquence création de tickets
   // =====================================
+
+  var data_freq_user = JSON.parse(document.getElementById('var_courbe_user').innerText);
+
+
   var earning = {
     chart: {
       id: "sparkline3",
@@ -74,11 +78,15 @@ $(function () {
       fontFamily: "Plus Jakarta Sans', sans-serif",
       foreColor: "#adb0bb",
     },
+    xaxis: {
+      categories: ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+
+    },
     series: [
       {
-        name: "Earnings",
+        name: "Tickets crées",
         color: "#49BEFF",
-        data: [25, 66, 20, 40, 12, 58, 20],
+        data: fillMissingMonths(data_freq_user),
       },
     ],
     stroke: {
@@ -101,7 +109,7 @@ $(function () {
         position: "right",
       },
       x: {
-        show: false,
+        show: true,
       },
     },
   };
@@ -560,3 +568,13 @@ $(function () {
   };
   new ApexCharts(document.querySelector("#earning"), earning).render();
 })
+
+function fillMissingMonths(data) {
+  const result = Array.from({ length: 12 }, (_, i) => {
+      const mois = (i + 1).toString();
+      const entry = data.find(item => item.mois === mois);
+      return entry ? parseInt(entry.nombre_tickets) : 0;
+  });
+
+  return result;
+}

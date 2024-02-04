@@ -15,11 +15,11 @@ $equipements = getEquipementsByUser( $_SESSION['id_user']); // Récupérer les �
               <div class=" d-flex align-items-center">
                 <div class="col-4 col-sm-3 col-md-2">
                   <h5 class=" fw-semibold ms-2">Total</h5>
-                  <p class="bg-success total d-flex align-items-center justify-content-center">16</p>
+                  <p class="bg-success total d-flex align-items-center justify-content-center"><?php echo intval(getNbreMaterielByUser($_SESSION['id_user'])[0]) + intval(getNbreLogicielByUser($_SESSION['id_user'])[0]);?></p>
                 </div>
                 <div class="col">
-                <h5 class="mt-4">Matériels: <span class="fw-semibold">12</span></h5>
-                <h5 class="mt-3">Logiciels: <span class="fw-semibold">4</span></h5>
+                <h5 class="mt-4">Matériels: <span class="fw-semibold"><?php echo getNbreMaterielByUser($_SESSION['id_user'])[0];?></span></h5>
+                <h5 class="mt-3">Logiciels: <span class="fw-semibold"><?php echo getNbreLogicielByUser($_SESSION['id_user'])[0];?></span></h5>
                 </div>
               </div>
             </div>

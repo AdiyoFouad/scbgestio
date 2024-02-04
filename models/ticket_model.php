@@ -59,6 +59,20 @@ function getUTickets($statut, $user){
 }
 
 
+function getUTicketsParmois($user){
+    $req = execSQL(
+        '
+        SELECT MONTH(tickets.date_creation) as mois, COUNT(tickets.ref_ticket) as nombre_tickets
+        FROM tickets
+        WHERE tickets.id_user = ?
+        GROUP BY mois',
+        array($user)
+    );
+    $res = $req->fetchall();
+    return $res;
+}
+
+
 function getTicketByRef($ref){
     $req = execSQL(
         '

@@ -1,7 +1,19 @@
+<?php
+include_once("models/equipement_model.php");
+
+include_once("models/ticket_model.php");
+
+?>
+
+
+
+
 <div class="container-fluid">
 <h4 class="fw-semibold mb-4 justify-content-end">SCB Gestio</h4>
         <hr>
-    
+        <div hidden>
+  <span id="var_courbe_user"><?php echo  json_encode(getUTicketsParmois($_SESSION['id_user'])); ?></span>
+</div>
 <div class="row">
       <div class="col-lg-6 d-flex align-items-strech">
         <div class="card w-100">
@@ -15,10 +27,10 @@
                       <div id="user_ae"></div>
                     </div>
                     <div class="d-flex">
-                    <h5 >Logiciels: <span class="fw-semibold">8</span> </h5>
+                    <h5 >Matériels: <span id="var_nbremat" class="fw-semibold"> <?php echo getNbreMaterielByUser($_SESSION['id_user'])[0] ; ?></span> </h5>
 
                     <span class="ms-3"></span>
-                    <h5 >Matériels: <span class="fw-semibold">16</span> </h5>
+                    <h5 >Logiciels: <span id="var_nbrelog" class="fw-semibold"><?php echo getNbreLogicielByUser($_SESSION['id_user'])[0];?></span> </h5>
                     </div>               
           </div>
         </div>
@@ -31,7 +43,7 @@
               
               <div class="card  overflow-hidden pb-0 bg-light-warning ">
                 <div class="card-body pb-2">
-                  <h4 style="font-size: 7.5rem;" class="card-title text-warning text-center fw-semibold">5</h4>
+                  <h4 style="font-size: 7.5rem;" class="card-title text-warning text-center fw-semibold"><?php echo count(getUTickets('En cours', $_SESSION['id_user']));?></h4>
                   
                   <p class="text-center text-warning fs-3 mb-9">tickets non traité(s)</p>
                 </div>
@@ -46,15 +58,15 @@
                   
                   <div >
                         <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
-                        <p class="d-inline-block">Tickets traités : <span class="fw-bolder">13</span></p>
+                        <p class="d-inline-block">Tickets traités : <span class="fw-bolder"><?php echo count(getUTickets('Traité', $_SESSION['id_user']));?></span></p>
                       </div>
                       <div >
                         <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                        <p class="d-inline-block">Tickets en cours : <span class="fw-bolder">13</span></p>
+                        <p class="d-inline-block">Tickets en cours : <span class="fw-bolder"><?php echo count(getUTickets('En cours', $_SESSION['id_user']));?></span></p>
                       </div>
                       <div >
                         <span class="round-8 bg-warning rounded-circle me-2 d-inline-block"></span>
-                        <p class="d-inline-block">Tickets rejetés : <span class="fw-bolder">13</span></p>
+                        <p class="d-inline-block">Tickets rejetés : <span class="fw-bolder"><?php echo count(getUTickets('Rejeté', $_SESSION['id_user']));?></span></p>
                       </div>
                   
                   

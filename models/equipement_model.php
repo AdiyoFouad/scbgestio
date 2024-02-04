@@ -101,6 +101,27 @@ function getEquipementsByUserAndType($user_id, $type_equipement){
     return $req->fetchall();
 }
 
+function getNbreMaterielByUser($user_id){
+    $req = execSQL(
+        'SELECT COALESCE(COUNT(type_équipement), 0) as nbre
+        FROM equipements
+        WHERE utilisateur = ? AND type_équipement = "Matériel"',
+        array($user_id)
+    );
+    return $req->fetch();
+}
+
+function getNbreLogicielByUser($user_id){
+    $req = execSQL(
+        'SELECT COALESCE(COUNT(type_équipement), 0) as nbre
+        FROM equipements
+        WHERE utilisateur = ? AND type_équipement = "Logiciel"',
+        array($user_id)
+    );
+    return $req->fetch();
+}
+
+
 function getEquipementsByUser($user_id){
     $req = execSQL(
         'SELECT * FROM equipements, users WHERE utilisateur = ? AND id_user = ? ORDER BY désignation',

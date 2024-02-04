@@ -1,3 +1,10 @@
+<?php
+include_once("models/equipement_model.php");
+
+$equipements = getEquipementsByUser( $_SESSION['id_user']); // Récupérer les équipements
+?>
+
+
 <div class="container-fluid">
 
         <div class="container-fluid">
@@ -21,9 +28,6 @@
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                       <tr>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">N°</h6>
-                        </th>
                         
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Type d'équipement</h6>
@@ -43,86 +47,51 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
-                        <td class="border-bottom-0">
-                            <p class="fw-normal mb-0">Logiciel</p>                         
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">Microsoft Office 360</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0 text-wrap">License : XXXX-XXXX-XXXX-XXXX</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">Expire dans 15jrs</h6>
-                        </td>
-                      </tr>   
-                      
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">2</h6></td>
-                        <td class="border-bottom-0">
-                            <p class="fw-normal mb-0">Matériel</p>                         
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">Ordinateur</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0 text-wrap">Core i5, windows 7 installé</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-success rounded-3 fw-semibold">Bon état</span>
-                          </div>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">3</h6></td>
-                        <td class="border-bottom-0">
-                            <p class="fw-normal mb-0">Matériel</p>                         
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">Ordinateur</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0 text-wrap">Core i3, windows 8 installé</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-warning rounded-3 fw-semibold">En maintenance</span>
-                          </div>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">4</h6></td>
-                        <td class="border-bottom-0">
-                            <p class="fw-normal mb-0">Matériel</p>                         
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">Ordinateur</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0 text-wrap">Core i5, windows 10 installé</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-normal mb-0">22 Janvier 2022</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-danger rounded-3 fw-semibold">Endommagé</span>
-                          </div>
-                        </td>
-                      </tr>                      
-                    </tbody>
+            <?php foreach ($equipements as $equipement) : ?>
+                <tr>
+                    
+                    <td class="border-bottom-0">
+                        <p class="fw-normal mb-0"><?php echo $equipement['type_équipement']; ?></p>
+                    </td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-normal text-wrap mb-0"><?php echo $equipement['désignation']; ?></h6>
+                    </td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-normal mb-0"><?php echo $equipement['caractéristique']; ?></h6>
+                    </td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-normal mb-0"><?php echo $equipement['date_assignation']; ?></h6>
+                    </td>
+                    <td class="border-bottom-0">
+                    <?php 
+                        $dateAssignation = new DateTime($equipement['date_assignation']);
+                        $aujourdHui = new DateTime();
+                        $difference = $aujourdHui->diff($dateAssignation);
+                        $joursRestants = $equipement['durée'] - $difference->days - 1;
+
+                        if ($equipement['type_équipement'] == 'Logiciel') : ?>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="fw-semibold"><?php echo "$joursRestants jrs restants"; ?></span>
+                            </div>
+                        <?php else : ?>
+                            <?php if ($equipement['etat'] == 'Bon état') : ?>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-success rounded-3 fw-semibold"><?php echo $equipement['etat']; ?></span>
+                                </div>
+                            <?php elseif ($equipement['etat'] == 'En maintenance') : ?>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-warning rounded-3 fw-semibold"><?php echo $equipement['etat']; ?></span>
+                                </div>
+                            <?php elseif ($equipement['etat'] == 'Endommagé') : ?>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-danger rounded-3 fw-semibold"><?php echo $equipement['etat']; ?></span>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
                   </table>
                 </div>
         </div>
@@ -145,5 +114,11 @@
           font-size: 2.2rem;
           margin-bottom:0;
         }
+
+        
+  thead,
+  tbody tr:nth-child(even) {
+    background-color: rgba(45, 45, 45, 0.05);
+  }
         
       </style>

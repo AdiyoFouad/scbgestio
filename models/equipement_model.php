@@ -101,6 +101,14 @@ function getEquipementsByUserAndType($user_id, $type_equipement){
     return $req->fetchall();
 }
 
+function getEquipementsByUser($user_id){
+    $req = execSQL(
+        'SELECT * FROM equipements, users WHERE utilisateur = ? AND id_user = ? ORDER BY désignation',
+        array($user_id, $user_id)
+    );
+    return $req->fetchall();
+}
+
 
 function setEquipementUser($equipement, $user){
     $req = execSQL(

@@ -56,12 +56,21 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">TICKETS</span>
             </li>
-            <li class="sidebar-item">
+            <!--<li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
                 <span class="hide-menu">Tout</span>
+              </a>
+            </li>-->
+            
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=tickets_traites" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Tickets traités</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -70,14 +79,6 @@
                   <i class="ti ti-user-plus"></i>
                 </span>
                 <span class="hide-menu">Tickets non traités</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="?page=tickets_traites" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Tickets traités</span>
               </a>
             </li>
             <li class="sidebar-item">

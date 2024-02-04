@@ -138,7 +138,7 @@ $users = getUsers();// Récupérer les utilisateurs
           document.getElementById('type_demande_card').innerText = ticket['type_demande'];
           document.getElementById('type_équipement').innerText = ticket['type_équipement'];
           document.getElementById('designation').innerText = ticket['désignation'];
-          document.getElementById('description').innerText = ticket['description'];
+          document.getElementById('description').innerText = ticket['description_ticket'];
         
           document.getElementById('details_tickets').scrollIntoView({ behavior: 'smooth' });
         })

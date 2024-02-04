@@ -1,6 +1,8 @@
 <?php
 require_once('../models/ticket_model.php');
 
+session_start();
+
 if (isset($_GET['ref'])) {
     $ticket = getTicketByRef($_GET['ref']);
     echo json_encode($ticket);
@@ -19,6 +21,16 @@ if (isset($_POST['rejeter'])){
 if (isset($_POST['cloturer'])){
     modifierTicket($_POST['ref'],'Traité');
     header('Location: ../?page=tickets_traites');
+}
+
+if (isset($_POST['creerTicket'])) {
+    addTickets($_POST['type'], $_POST['equipement'], $_SESSION['id_user'], $_POST['description']);
+    header('Location: ../?page=tickets_non_traites');
+}
+
+if (isset($_POST['signaler'])) {
+    addTickets('Problème technique', $_POST['equipement'], $_SESSION['id_user'], $_POST['description']);
+    header('Location: ../?page=tickets_non_traites');
 }
 
 ?>

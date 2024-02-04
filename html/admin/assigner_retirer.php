@@ -22,6 +22,7 @@
                             <option></option>
                             <option value="DE">DE</option>
                             <option value="HSE">HSE</option>
+                            <option value="Logistique">Logistique</option>
                         </select>
                     </div>
                     <div class="mb-3">

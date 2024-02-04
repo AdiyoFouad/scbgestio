@@ -32,7 +32,7 @@ $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`historique_mouvement` (
 ) ENGINE = InnoDB;
 ");
 
-$bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`tickets` ( `ref_ticket` VARCHAR(10) NOT NULL , `date_creation` DATE NOT NULL , `id_equipement` INT NOT NULL , `id_user` INT NOT NULL , `statut` ENUM('En cours','Traité','Rejeté') NOT NULL , `description` VARCHAR(1000) NOT NULL , `type_demande` ENUM('Nouvelle installation','Problème technique','Demande d''''assistance') NOT NULL , PRIMARY KEY (`ref_ticket`)) ENGINE = InnoDB;");
+$bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`tickets` ( `ref_ticket` VARCHAR(10) NOT NULL , `date_creation` TIMESTAMP DEFAULT CURRENT_TIMESTAMP , `id_equipement` INT NOT NULL , `id_user` INT NOT NULL , `statut` ENUM('En cours','Traité','Rejeté') NOT NULL , `description_ticket` VARCHAR(1000) NOT NULL , `type_demande` ENUM('Nouvelle installation','Problème technique','Demande d''assistance') NOT NULL , PRIMARY KEY (`ref_ticket`)) ENGINE = InnoDB;");
 
 function execSQL($sql, $param) {
     global $bdd;

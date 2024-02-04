@@ -2,6 +2,33 @@
 
 require_once (__DIR__ ."/../connexion_db.php");
 
+function genererClePrimaire(){
+    $prefixe = 'T-';
+    $caracteres = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $longueur = 6;
+
+    do {
+        $cle = $prefixe;
+        for ($i=0; $i < $longueur; $i++) { 
+            $cle .= $caracteres[rand(0, strlen($caracteres)) - 1];
+        }
+        $req = execSQL(
+            'SELECT * FROM tickets WHERE ref_ticket = ?',
+            array($cle)
+        );
+        $res= $req->fetch();
+    } while ( $req->rowCount() > 0);
+    return $cle;
+}
+
+
+function addTickets($type_demande, $equipement, $user, $description){
+    $req = execSQL(
+        'INSERT INTO tickets(ref_ticket, id_equipement, id_user, statut, type_demande, description_ticket) VALUES (?, ?, ?, ?, ?, ?)',
+        array(genererClePrimaire(), $equipement, $user, 'En cours', $type_demande, $description)
+    );
+    return $req;
+}
 
 function getTickets($statut){
     $req = execSQL(
@@ -10,8 +37,22 @@ function getTickets($statut){
         FROM tickets
         INNER JOIN users ON tickets.id_user = users.id_user
         INNER JOIN equipements ON tickets.id_equipement = equipements.id_equipement
-        WHERE tickets.statut = ?',
+        WHERE tickets.statut = ? ORDER BY tickets.date_creation DESC',
         array($statut)
+    );
+    $res = $req->fetchall();
+    return $res;
+}
+
+function getUTickets($statut, $user){
+    $req = execSQL(
+        '
+        SELECT tickets.*, users.nom, users.prenom, equipements.désignation, equipements.type_équipement
+        FROM tickets
+        INNER JOIN users ON tickets.id_user = users.id_user
+        INNER JOIN equipements ON tickets.id_equipement = equipements.id_equipement
+        WHERE tickets.statut = ? AND tickets.id_user = ? ORDER BY tickets.date_creation DESC',
+        array($statut, $user)
     );
     $res = $req->fetchall();
     return $res;
@@ -80,6 +121,8 @@ function modifierTicket($ref, $statut){
         array($statut, $ref)
     );
 }
+
+
 
 
 ?>

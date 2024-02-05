@@ -44,7 +44,6 @@ function getNbreMatStock(){
     return $res[0]['quantite'];
 }
 
-
 function getNbreLogStock(){
     $req = execSQL(
         'SELECT COUNT(*) as quantite FROM equipements WHERE utilisateur IS NULL AND type_équipement = ?',
@@ -53,7 +52,6 @@ function getNbreLogStock(){
     $res = $req->fetchall();
     return $res[0]['quantite'];
 }
-
 
 function getNbreMatAss(){
     $req = execSQL(
@@ -73,7 +71,6 @@ function getNbreLogAss(){
     $res = $req->fetchall();
     return $res[0]['quantite'];
 }
-
 
 function getEquipementsEnStockByTypeAndEtat($type, $etat) {
     // Effectuez ici votre logique pour filtrer les équipements en stock en fonction du type et de l'état
@@ -100,9 +97,6 @@ function getEquipementsEnStockByTypeAndEtat($type, $etat) {
 
     return $req->fetchall();
 }
-
-
-
 
 function getEquipementsAssignésByTypeAndEtatAndDepartement($type, $etat, $departement) {
     // Effectuez ici votre logique pour filtrer les équipements en stock en fonction du type, de l'état et du département
@@ -171,11 +165,28 @@ function getEquipementsByUser($user_id){
     return $req->fetchall();
 }
 
+function getEquipementByID($id){
+    $req = execSQL(
+        'SELECT * FROM equipements WHERE id_equipement = ?',
+        array($id)
+    );
+    return $req->fetch();
+}
+
 
 function setEquipementUser($equipement, $user){
     $req = execSQL(
         'UPDATE equipements SET utilisateur = ?, date_assignation = ? WHERE id_equipement = ?',
         array($user, date('Y-m-d'),$equipement)
+    );
+    addHistoriqueMouvementWithUser($equipement, null, 'SORTIE', 1, $user);
+
+}
+
+function setEquipementEtat($equipement, $etat){
+    $req = execSQL(
+        'UPDATE equipements SET etat = ? WHERE id_equipement = ?',
+        array($etat ,$equipement)
     );
     addHistoriqueMouvementWithUser($equipement, null, 'SORTIE', 1, $user);
 

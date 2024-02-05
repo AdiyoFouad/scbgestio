@@ -66,6 +66,7 @@ $equipements = getEquipementsAssignés(); // Récupérer les équipements
             <th class="border-bottom-0">
               <h6 class="fw-semibold mb-0">Etat</h6>
             </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -118,16 +119,109 @@ $equipements = getEquipementsAssignés(); // Récupérer les équipements
                             <?php endif; ?>
                         <?php endif; ?>
                     </td>
+                    
+                    <td><?php if ($equipement['type_équipement'] == 'Matériel') : ?>
+                                <div class="d-flex align-items-center gap-2">
+                                <button type="submit" class="btn btn-primary me-1" onclick="showme(<?php echo $equipement['id_equipement']; ?>)"></button>
+                                    
+                                </div>
+                              <?php endif; ?>
+                            </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
 
       </table>
     </div>
+    
+    <div id="popup2" class="popup">
+            <button class="btn btn-danger fs-5  d-flex justify-content-center align-items-center" id="fermer" onclick="hideme()">
+              <i class="ti ti-x fs-5 fw-bolder"></i>
+            </button>
+            <form action="controllers/equipement_controler.php" method="post" >
+              <h5 class="text-center">Modifier un équipement</h5>
+              <hr>
+
+              <input type="text" id="id_equipement" name="equipement" hidden>
+              <input type="text" id="userme" name="userme" hidden>
+
+              <div class="mb-3">
+                  <label for="type_equipementme" class="form-label">Type d'équipement</label>
+                  <select disabled id="type_equipementme" class="form-select" name="type_equipement" required onchange="toggleFields()">
+                      <option disabled selected></option>
+                      <option value="Logiciel">Logiciel</option>
+                      <option value="Matériel">Matériel</option>
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="designationme" class="form-label">Désignation</label>
+                  <input disabled type="text" class="form-control" id="designationme" name="designation" required>
+              </div>
+              <div class="mb-3">
+                  <label for="caracteristiqueme" class="form-label">Caractéristique</label>
+                  <input disabled type="text" class="form-control" id="caracteristiqueme" name="caracteristique" required>
+              </div>
+              <div class="mb-3">
+                  <label for="date_achatme" class="form-label">Date d'achat</label>
+                  <input disabled type="date" class="form-control" id="date_achatme" name="date_achat" required>
+              </div>
+              <div class="mb-3" id="etatContainer" >
+                  <label for="etat_equipementme" class="form-label">État matériel</label>
+                  <select id="etat_equipementme" class="form-select" name="etat_equipement" required>
+                      <option></option>
+                      <option value="Bon état">Bon état</option>
+                      <option value="En maintenance">En maintenance</option>
+                      <option value="Endommagé">Endommagé</option>
+                  </select>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                  <button type="submit" name="setEtat_equipement" class="btn btn-primary mt-3">Modifier état</button>
+              </div>
+          </form>
+        </div>
   </div>
+  <!-- Overlay pour masquer l'arrière-plan -->
+  <div id="overlay"></div>
 </div>
 
 <style>
+    #fermer {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        color: #fff;
+    }
+
+    
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 350px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+
   .card.info {
     height: 125px;
     padding-top: 10px;
@@ -154,6 +248,32 @@ $equipements = getEquipementsAssignés(); // Récupérer les équipements
 </style>
 
 <script>
+
+
+function showme(id){
+
+  document.getElementById('id_equipement').value = id;
+
+  document.getElementById('popup2').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+
+
+  fetch('controllers/equipement_controler.php?id_equipement=' + id)
+  .then(response => response.json())
+  .then(equipementData => {
+      document.getElementById('userme').value = equipementData['utilisateur'];
+      document.getElementById('type_equipementme').value = equipementData['type_équipement'];
+      document.getElementById('designationme').value = equipementData['désignation'];
+      document.getElementById('caracteristiqueme').value = equipementData['caractéristique'];
+      document.getElementById('date_achatme').value = equipementData['date_achat'];
+      document.getElementById('etat_equipementme').value = equipementData['etat'];
+      // Mettre à jour le tableau des utilisateurs avec les données récupérées
+      
+      console.log(equipementData);
+  })
+  .catch(error => console.error('Erreur lors de la récupération des équipemnts:', error));
+
+}
 
 function applyFilters() {
         var type = document.getElementById('type_equipement').value;

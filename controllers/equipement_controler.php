@@ -20,6 +20,18 @@ if (isset($_POST['update_equipement_user']) ){
     header("Location:../?page=equipements");
 }
 
+if (isset($_POST['setEtat_equipement']) ){
+        setEquipementEtat($_POST['equipement'], $_POST['etat_equipement']);
+        $_SESSION['msg'] = "Etat modifié avec succès";
+        if ($_POST['userme']) {
+            header("Location:../?page=equipements");
+        } else {
+            header("Location:../?page=stock");
+        }
+        
+        
+}
+
 if (isset($_GET['type']) && isset($_GET['statut']) ){
     $equipements = getEquipementsEnStockByTypeAndEtat($_GET['type'], $_GET['statut']);
     echo json_encode($equipements);
@@ -32,6 +44,12 @@ if (isset($_GET['type']) && isset($_GET['etat']) && isset($_GET['departement']))
 
 if (isset($_GET['type']) && isset($_GET['user_id'])){
     $equipements = getEquipementsByUserAndType($_GET['user_id'], $_GET['type']);
+    echo json_encode($equipements);
+}
+
+
+if (isset($_GET['id_equipement'])){
+    $equipements = getEquipementByID($_GET['id_equipement']);
     echo json_encode($equipements);
 }
 

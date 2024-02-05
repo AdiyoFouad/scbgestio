@@ -2,7 +2,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
+          <a href="." class="text-nowrap logo-img">
             <img src="assets/images/logos/dark-logo.svg" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -39,7 +39,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=demande_equipement" aria-expanded="false">
                 <span>
-                  <i class="ti ti-alert-circle"></i>
+                  <i class="ti ti-help"></i>
                 </span>
                 <span class="hide-menu">Demande</span>
               </a>
@@ -47,7 +47,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=signaler_defaillance" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cards"></i>
+                  <i class="ti ti-alert-triangle"></i>
                 </span>
                 <span class="hide-menu">Signaler la défaillance </span>
               </a>
@@ -68,7 +68,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets_traites" aria-expanded="false">
                 <span>
-                  <i class="ti ti-login"></i>
+                  <i class="ti ti-checklist text-success"></i>
                 </span>
                 <span class="hide-menu">Tickets traités</span>
               </a>
@@ -76,7 +76,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets_non_traites" aria-expanded="false">
                 <span>
-                  <i class="ti ti-user-plus"></i>
+                  <i class="ti ti-cards text-primary"></i>
                 </span>
                 <span class="hide-menu">Tickets non traités</span>
               </a>
@@ -84,7 +84,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="?page=tickets_rejetes" aria-expanded="false">
                 <span>
-                  <i class="ti ti-user-plus"></i>
+                  <i class="ti ti-square-x text-danger"></i>
                 </span>
                 <span class="hide-menu">Tickets rejetés</span>
               </a>

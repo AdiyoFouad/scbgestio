@@ -1,8 +1,10 @@
 <?php
 require_once('../models/consommable_model.php');
+session_start();
 
 if (isset($_POST['ajouter_consommable'])) {
     addConsommable($_POST['designation'], $_POST['modele'], $_POST['quantite']);
+    $_SESSION['msg'] = $_POST['quantite'] . " " . $_POST['designation'] . " (consommable) ajouté au stock.";
     header("Location:../?page=consommables");
 }
 

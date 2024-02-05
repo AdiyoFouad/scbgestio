@@ -13,6 +13,16 @@ function getConsommables() {
     return $req;
 }
 
+
+function getNbreConsommables() {
+    $req = execSQL(
+        'SELECT SUM(quantité) AS quantite FROM consommables',
+        array()
+    );
+    $res = $req->fetchall();
+    return $res[0]['quantite'];
+}
+
 function getConsommablesById($id_consommable) {
     $req = execSQL(
         'SELECT * FROM consommables WHERE id_consommable = ?', 
@@ -32,6 +42,7 @@ function addConsommable($designation, $modele, $quantite) {
 
     $id_consommable = getLastId();
     addHistoriqueMouvement(null, $id_consommable, 'ENTREE', $quantite);
+    $_SESSION['msg'] = $quantite ." ". $designation ." entré(s) en stock.";
     
     return $req;
 }
@@ -54,9 +65,11 @@ function updateConsommable($id_consommable, $nouvelle_designation, $nouveau_mode
     if ($difference_quantite < 0) {
         // Il s'agit d'une sortie
         addHistoriqueMouvement(null, $id_consommable, 'SORTIE', abs($difference_quantite));
+        $_SESSION['msg'] = abs($difference_quantite) ." ". $nouvelle_designation ." sortie(s) de stock.";
     } elseif ($difference_quantite > 0) {
         // Il s'agit d'une entrée
         addHistoriqueMouvement(null, $id_consommable, 'ENTREE', $difference_quantite);
+        $_SESSION['msg'] = $difference_quantite ." ". $nouvelle_designation ." entré(s) en stock.";
     }
 
     return $req;

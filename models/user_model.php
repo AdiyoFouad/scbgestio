@@ -16,6 +16,8 @@ function seconnecter($email, $mdp) {
         $_SESSION['departement'] = $res[4];
         $_SESSION['email'] = $res[5];
         $_SESSION['administrateur'] = $res[6];
+        $_SESSION['msg'] = "Vous interragissez en tant que ". $res[2] . " " . $res[3];
+        $_SESSION['msg_r'] = "";
     }
 }
 

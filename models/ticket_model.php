@@ -73,6 +73,19 @@ function getUTicketsParmois($user){
 }
 
 
+function getTicketsParmois(){
+    $req = execSQL(
+        '
+        SELECT MONTH(tickets.date_creation) as mois, COUNT(tickets.ref_ticket) as nombre_tickets
+        FROM tickets
+        GROUP BY mois',
+        array()
+    );
+    $res = $req->fetchall();
+    return $res;
+}
+
+
 function getTicketByRef($ref){
     $req = execSQL(
         '
@@ -134,6 +147,7 @@ function modifierTicket($ref, $statut){
         'UPDATE tickets SET statut = ? WHERE ref_ticket = ?',
         array($statut, $ref)
     );
+    return $ref;
 }
 
 

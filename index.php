@@ -166,10 +166,25 @@ else{
     <!--  Main wrapper -->
     <div class="body-wrapper">
     <?php include_once('html/header.php'); ?>
+    
+    
+                  
       
     <?php include_once($view); ?>
+    <?php
+
+  if(isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+      echo "<div id=\"msgContainer\" class=\"msg w-lg-50 text-center alert alert-success\" role=\"alert\">". $_SESSION['msg'] ."</div>";
+    }
+    if(isset($_SESSION['msg_r']) && $_SESSION['msg_r'] != "") {
+      echo "<div id=\"msgContainer2\" class=\"msg w-lg-50 text-center alert alert-danger\" role=\"alert\">". $_SESSION['msg_r'] ."</div>";
+    }
+
+     ?>
+  
   </div>
   </div>
+
   
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -178,7 +193,53 @@ else{
 
   <script src="assets/js/sidebarmenu.js"></script>
   <script src="assets/js/app.min.js"></script>
-  <script src="assets/js/dashboard.js"></script>
+
+  <?php 
+
+if ($admin){
+  echo "<script src=\"assets/js/dashboard.js\"></script>";
+}else {
+  echo "<script src=\"assets/js/dashboard_user.js\"></script>";
+}
+  
+  ?>
+  
 </body>
+<style>
+  .msg {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.msg.show {
+    opacity: 1; 
+}
+</style>
+
+
+<script>
+  const msgContainer = document.getElementById('msgContainer');
+  if (msgContainer) {
+      msgContainer.classList.add('show');
+      setTimeout(function () {
+          msgContainer.classList.remove('show');
+          <?php $_SESSION['msg'] = ""; ?>
+      }, 3000);
+  }
+
+  const msgContainer2 = document.getElementById('msgContainer2');
+  if (msgContainer2) {
+      msgContainer2.classList.add('show');
+      setTimeout(function () {
+          msgContainer2.classList.remove('show');
+          <?php $_SESSION['msg_r'] = ""; ?>
+      }, 3000);
+  }
+</script>
 
 </html>

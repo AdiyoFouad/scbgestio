@@ -27,6 +27,54 @@ function getEquipementsEnStock(){
 }
 
 
+function getEquipementsAssignés(){
+    $req = execSQL(
+        'SELECT * FROM equipements, users WHERE utilisateur = id_user ORDER BY désignation',
+        array()
+    );
+    return $req;
+}
+
+function getNbreMatStock(){
+    $req = execSQL(
+        'SELECT COUNT(*) as quantite FROM equipements WHERE utilisateur IS NULL AND type_équipement = ?',
+        array('Matériel')
+    );
+    $res = $req->fetchall();
+    return $res[0]['quantite'];
+}
+
+
+function getNbreLogStock(){
+    $req = execSQL(
+        'SELECT COUNT(*) as quantite FROM equipements WHERE utilisateur IS NULL AND type_équipement = ?',
+        array('Logiciel')
+    );
+    $res = $req->fetchall();
+    return $res[0]['quantite'];
+}
+
+
+function getNbreMatAss(){
+    $req = execSQL(
+        'SELECT COUNT(*) as quantite FROM equipements, users WHERE utilisateur = id_user AND type_équipement = ?',
+        array('Matériel')
+    );
+    $res = $req->fetchall();
+    return $res[0]['quantite'];
+}
+
+
+function getNbreLogAss(){
+    $req = execSQL(
+        'SELECT COUNT(*) as quantite FROM equipements, users WHERE utilisateur = id_user AND type_équipement = ?',
+        array('Logiciel')
+    );
+    $res = $req->fetchall();
+    return $res[0]['quantite'];
+}
+
+
 function getEquipementsEnStockByTypeAndEtat($type, $etat) {
     // Effectuez ici votre logique pour filtrer les équipements en stock en fonction du type et de l'état
     // Utilisez les paramètres $type et $etat dans votre requête SQL
@@ -54,13 +102,6 @@ function getEquipementsEnStockByTypeAndEtat($type, $etat) {
 }
 
 
-function getEquipementsAssignés(){
-    $req = execSQL(
-        'SELECT * FROM equipements, users WHERE utilisateur = id_user ORDER BY désignation',
-        array()
-    );
-    return $req;
-}
 
 
 function getEquipementsAssignésByTypeAndEtatAndDepartement($type, $etat, $departement) {

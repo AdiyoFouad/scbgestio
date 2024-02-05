@@ -15,6 +15,21 @@ function getHistoriqueMouvement() {
     return $req->fetchall();
 }
 
+function getES() {
+    $req = execSQL('
+        SELECT 
+            MONTH(date_mouvement) AS mois,
+            COUNT(CASE WHEN type_mouvement = "ENTREE" THEN 1 END) AS nb_entrees,
+            COUNT(CASE WHEN type_mouvement = "SORTIE" THEN 1 END) AS nb_sorties
+        FROM historique_mouvement
+        GROUP BY mois
+        ORDER BY mois DESC
+    ', array());
+
+    return $req->fetchall();
+}
+
+
 
 
 

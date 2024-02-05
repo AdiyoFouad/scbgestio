@@ -1,16 +1,21 @@
 <?php
 require_once('../models/equipement_model.php');
 
+session_start();
+
 if (isset($_POST['new_equipement']) ){
     ajouterEquipement($_POST['type_equipement'], $_POST['designation'], $_POST['date_achat'], $_POST['etat_equipement'], $_POST['duree'], $_POST['caracteristique']);
+    $_SESSION['msg'] = $_POST['designation'] . " ajouté au stock.";
     header("Location:../?page=stock");
 }
 
 if (isset($_POST['update_equipement_user']) ){
     if ($_POST['action'] == 'assigner') {
         setEquipementUser($_POST['equipement'], $_POST['user']);
+        $_SESSION['msg'] = "Equipement assigné avec succès.";
     } else {
         removeEquipementUser($_POST['equipement'], $_POST['user']);
+        $_SESSION['msg_r'] = "Equipement retiré avec succès et mis en stock.";
     }
     header("Location:../?page=equipements");
 }

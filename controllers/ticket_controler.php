@@ -14,17 +14,20 @@ if (isset($_GET['type_demande']) && isset($_GET['type_équipement']) && isset($_
 }
 
 if (isset($_POST['rejeter'])){
-    modifierTicket($_POST['ref'],'Rejeté');
+    $ref = modifierTicket($_POST['ref'],'Rejeté');
+    $_SESSION['msg'] = "Le ticket ". $ref ." a été rejeté avec succès.";
     header('Location: ../?page=tickets_rejetes');
 }
 
 if (isset($_POST['cloturer'])){
-    modifierTicket($_POST['ref'],'Traité');
+    $ref = modifierTicket($_POST['ref'],'Traité');
+    $_SESSION['msg'] = "Le ticket ". $ref ." a été traité avec succès.";
     header('Location: ../?page=tickets_traites');
 }
 
 if (isset($_POST['creerTicket'])) {
-    addTickets($_POST['type'], $_POST['equipement'], $_SESSION['id_user'], $_POST['description']);
+    $ref = addTickets($_POST['type'], $_POST['equipement'], $_SESSION['id_user'], $_POST['description']);
+    $_SESSION['msg'] = "Le ticket ". $ref ." a été créé avec succès.";
     header('Location: ../?page=tickets_non_traites');
 }
 

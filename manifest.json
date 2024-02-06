@@ -1,0 +1,15 @@
+{
+    "short_name":"SCB Gestio",
+    "name":"Application de gestion de stock",
+    "icons": [
+        {
+            "src": "/scbgestio/assets/images/logos/favicon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url":"/scbgestio/index.php",
+    "background_color":"#454545",
+    "display": "standalone",
+    "theme_color":"#3355FF"
+}

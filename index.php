@@ -154,6 +154,13 @@ else{
   <title>SCB Gestio</title>
   <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
+  <link rel="manifest" href="manifest.json" />
+
+  <script>
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('sw.js');
+    };
+  </script>
 </head>
 
 <body>

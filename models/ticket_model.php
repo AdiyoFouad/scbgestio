@@ -23,11 +23,12 @@ function genererClePrimaire(){
 
 
 function addTickets($type_demande, $equipement, $user, $description){
+    $ref = genererClePrimaire();
     $req = execSQL(
         'INSERT INTO tickets(ref_ticket, id_equipement, id_user, statut, type_demande, description_ticket) VALUES (?, ?, ?, ?, ?, ?)',
-        array(genererClePrimaire(), $equipement, $user, 'En cours', $type_demande, $description)
+        array($ref, $equipement, $user, 'En cours', $type_demande, $description)
     );
-    return $req;
+    return $ref;
 }
 
 function getTickets($statut){

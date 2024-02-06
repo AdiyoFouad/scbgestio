@@ -109,10 +109,18 @@ $tickets = getUTickets('En cours', $_SESSION['id_user']); // Récupérer les uti
 </div>
 
 <style>
+
+
     thead,
     .table-striped-custom tbody tr:nth-child(even) {
         background-color: rgba(45, 45, 45, 0.05); /* couleur du texte sur la ligne impaire */
     }
+    .table-striped-custom tbody tr:hover {
+    background-color: rgba(45, 5, 90, 0.1);
+    cursor: pointer;
+    color:white;
+}
+   
 </style>
 
 <script>
@@ -121,7 +129,7 @@ $tickets = getUTickets('En cours', $_SESSION['id_user']); // Récupérer les uti
         .then(response => response.json())
         .then(ticket => {
           document.getElementById('ref_ticket').innerText = ticket['ref_ticket'];
-          document.getElementById('nom').innerText = ticket['nom'];
+          document.getElementById('nom').innerText = ticket['nom'] + " " + ticket['prenom'];
           document.getElementById('date').innerText = ticket['date_creation'];
           document.getElementById('type_demande_card').innerText = ticket['type_demande'];
           document.getElementById('type_équipement').innerText = ticket['type_équipement'];

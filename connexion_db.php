@@ -27,7 +27,7 @@ $bdd->exec("CREATE TABLE IF NOT EXISTS `scbgestio`.`historique_mouvement` (
     `id_utilisateur` INT,
     PRIMARY KEY (`id_mouvement`),
     FOREIGN KEY (`id_equipement`) REFERENCES `equipements` (`id_equipement`) ON DELETE CASCADE,
-    FOREIGN KEY (`id_consommable`) REFERENCES `consommables` (`id_consommable`),
+    FOREIGN KEY (`id_consommable`) REFERENCES `consommables` (`id_consommable`) ON DELETE CASCADE,
     FOREIGN KEY (`id_utilisateur`) REFERENCES `users` (`id_user`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 ");

@@ -1,7 +1,12 @@
 {
-    "short_name":"SCB Gestio",
-    "name":"Application de gestion de stock",
-    "icons": [
+    "short_name":"SCB Gestion de Parc Informatique",
+    "name":"SCB GPI",
+    "icons": [      
+        {
+            "src": "/scbgestio/assets/images/logos/logo.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
         {
             "src": "/scbgestio/assets/images/logos/favicon.png",
             "type": "image/png",

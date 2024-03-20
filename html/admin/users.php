@@ -6,7 +6,14 @@ $users = getUsers(); // Récupérer les utilisateurs
 
 <div class="container-fluid">
     <div class="container-fluid">
-        <h4 class="fw-semibold mb-4">Gestion des utilisateurs</h4>
+        <div class="row">
+                    <div class=" col-6 col-sm-5">
+                    <h4 class="d-flex justify-content-start align-items-center fw-semibold">Gestion des utilisateurs </h4>
+                    </div>
+                    <div class="col d-flex justify-content-end ">
+                        <button class="btn btn-primary p-2 pt-0 pb-0"><a target="_blank" href="genpdf.php" class="fs-5 ti ti-printer text-white"></a></button>
+                    </div>
+                </div>
         <hr>
 
         <div class="card mb-3 p-0">
@@ -132,10 +139,6 @@ $users = getUsers(); // Récupérer les utilisateurs
                 <label for="mdp" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" id="mdp" name="mdp" required>
             </div>
-            <div class="mb-3">
-                <label for="mdp2" class="form-label">Confirmer mot de passe</label>
-                <input type="password" class="form-control" id="mdp12" name="mdp2" required>
-            </div>
             <div class="d-flex justify-content-center align-items-center">
                 <button type="submit" name="new_user" class="btn btn-primary w-25 mt-3">Créer</button>
             </div>
@@ -143,7 +146,7 @@ $users = getUsers(); // Récupérer les utilisateurs
     </div>
 
     <div id="popup2" class="popup">
-            <button class="btn btn-danger fs-5  d-flex justify-content-center align-items-center" id="fermer" onclick="hidePopup()">
+            <button class="btn btn-danger fs-5  d-flex justify-content-center align-items-center" id="fermer2" onclick="hidePopup2()">
                 <i class="ti ti-x fs-5 fw-bolder"></i>
             </button>
         <form action="controllers/user_controler.php" method="post">
@@ -188,10 +191,6 @@ $users = getUsers(); // Récupérer les utilisateurs
                 <label for="mdp" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" id="mdp2" name="mdp" required>
             </div>
-            <div class="mb-3">
-                <label for="mdp2" class="form-label">Confirmer mot de passe</label>
-                <input type="password" class="form-control" id="mdp22" name="mdp2" required>
-            </div>
             <div class="d-flex justify-content-center align-items-center">
                 <form action="" method="post">
                   <button type="submit" name="alter_user" class="btn btn-primary w-25 mt-3">Modifier</button>
@@ -206,6 +205,16 @@ $users = getUsers(); // Récupérer les utilisateurs
 
 <style>
     #fermer {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        color: #fff;
+    }
+
+    #fermer2 {
         position: absolute;
         top: -15px;
         right: -15px;

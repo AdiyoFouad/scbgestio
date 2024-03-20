@@ -163,6 +163,25 @@ else{
   </script>
 </head>
 
+<style>
+  
+  body{
+    z-index: 1;
+  }
+  .background{
+    z-index: -100000;
+    position: absolute;
+    top:15vh;
+    left:10%;
+  width: 80%; /* Largeur de la div */
+  height: 80vh; /* Hauteur de la div, 100vh signifie 100% de la hauteur de la fenêtre */
+  background-image: url('assets/images/logos/favicon.png'); /* Chemin vers votre image */
+  background-size: cover; /* Redimensionner l'image pour remplir complètement la div */
+  background-position: center; /* Centrer l'image */
+  filter: blur(10px);
+  }
+</style>
+
 <body>
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -172,6 +191,7 @@ else{
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">
+      <div class=background></div>
     <?php include_once('html/header.php'); ?>
     
     
@@ -214,6 +234,7 @@ if ($admin){
 </body>
 <style>
   .msg {
+    z-index: -10000;
     position: absolute;
     top: 20px;
     left: 50%;

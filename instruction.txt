@@ -1,0 +1,9 @@
+1- Afin de permettre l'utilisation des images dans le pdf générer tu te dois d'activer l'extension gd de php 
+   - dans xamp->apach->config->php.ini
+   - tu active l'extension en enlevant le ";" devant "extension=gd" dans le fichier
+   - enregistre le fichier et tu redémarre apache
+
+2- Pour modifier le port d'écoute de l'app
+   - dans xamp->apach->config->httpd. conf
+   - recherche la ligne qui définit le port 80 et modifie-le pour le numéro de port souhaité
+   - enregistre le fichier et tu redémarre apache

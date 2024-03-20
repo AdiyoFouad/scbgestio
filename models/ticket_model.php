@@ -28,6 +28,10 @@ function addTickets($type_demande, $equipement, $user, $description){
         'INSERT INTO tickets(ref_ticket, id_equipement, id_user, statut, type_demande, description_ticket) VALUES (?, ?, ?, ?, ?, ?)',
         array($ref, $equipement, $user, 'En cours', $type_demande, $description)
     );
+    envoyerMail(
+        "SCB Gestio: Nouveau ticket créé",
+         $_SESSION['nom']. " " . $_SESSION['prenom'] . "a créé un nouveau ticket.\r\nRéférence ticket: " . $ref . "\r\nType de demande: " . $type_demande
+        );
     return $ref;
 }
 
